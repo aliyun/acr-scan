@@ -1,0 +1,33 @@
+name: 'Alibaba Cloud Container Registry (ACR) Image Scan'
+description: 'Scan image in container registry'
+inputs: 
+  access-key-id:
+    description: 'Access key id'
+    required: false
+    default: ''
+  access-key-secret:
+    description: 'Access key secret'
+    required: false
+    default: ''
+  region-id:
+    description: 'Region id'
+    required: false
+    default: 'cn-hangzhou'
+  instance-id:
+    description: 'Registry instance id'
+    required: false
+    default: ''
+  repository:
+    description: 'Image repository name including namespace/name'
+    required: true
+    default: ''
+  tag:
+    description: 'Image tag'
+    required: true
+    default: 'latest'
+branding:
+  color: 'green'
+  icon: 'anchor'
+runs:
+  using: 'node12'
+  main: 'src/scan.js'
