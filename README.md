@@ -2,7 +2,7 @@
 Use this GitHub Action to scan images in [Alibaba Cloud Container Registry](https://www.aliyun.com/product/acr). 
 
 ```yaml
-- uses: denverdino/acr-scan@v0.1.1
+- uses: denverdino/acr-scan@v1
   with:
     region-id: '<region id>' # example: cn-hangzhou
     access-key-id: '<access key id>'
@@ -14,7 +14,7 @@ Use this GitHub Action to scan images in [Alibaba Cloud Container Registry](http
 Or scan image in ACR EE instance
 
 ```yaml
-- uses: denverdino/acr-scan@v0.1.1
+- uses: denverdino/acr-scan@v1
   with:
     region-id: '<region id>' # example: cn-hangzhou
     access-key-id: '<access key id>'
