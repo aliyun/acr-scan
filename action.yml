@@ -30,4 +30,5 @@ branding:
   icon: 'anchor'
 runs:
   using: 'node12'
-  main: 'src/scan.js'
+  main: 'dist/index.js'
+
