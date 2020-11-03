@@ -1,19 +1,11 @@
 const core = require('@actions/core');
-const io = require('@actions/io');
-const { issueCommand } = require('@actions/core/lib/command');
 
-const path = require('path');
-const fs = require('fs');
 const ROAClient = require('@alicloud/pop-core').ROAClient;
 const RPCClient = require('@alicloud/pop-core').RPCClient;
 
 
 function getAPIEndpoint(regionId) {
     return `https://cr.${regionId}.aliyuncs.com`
-}
-
-function getRegistryEndpoint(regionId) {
-    return `https://registry.${regionId}.aliyuncs.com`
 }
 
 async function run() {
@@ -27,14 +19,15 @@ async function run() {
     if (accessKeyId.length > 0 && accessKeySecret.length > 0) {
         if (regionId.length == 0) {
             core.setFailed(`Action failed for region-id is missing`);
+            return;
         }
         
-        endpoint = getAPIEndpoint(regionId);
+        let endpoint = getAPIEndpoint(regionId);
 
         if (instanceId.length == 0) {
 
             try {
-                var client = new ROAClient({
+                let client = new ROAClient({
                     accessKeyId,
                     accessKeySecret,
                     endpoint: endpoint,
@@ -49,7 +42,7 @@ async function run() {
                 core.setFailed(`Action failed to scan image with error: ${err}`);
             }
         } else {
-            var client = new RPCClient({
+            let client = new RPCClient({
                 accessKeyId,
                 accessKeySecret,
                 endpoint: endpoint,
@@ -70,6 +63,7 @@ async function run() {
                 console.log(`Found image repository ${repository} with repoId ${repoId}`);
             } catch (err) {
                 core.setFailed(`Action failed to find image repository ${repository} with error: ${err}`);
+                return;
             }
             try {
                 let result = await client.request("CreateRepoTagScanTask", {
@@ -89,4 +83,4 @@ async function run() {
     }
 }
 
-run().catch(core.setFailed);
+run().catch(e => core.setFailed(e));
