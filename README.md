@@ -1,8 +1,11 @@
-# Scan images in Alibaba Cloud Container Registry Service
-Use this GitHub Action to scan images in [Alibaba Cloud Container Registry](https://www.aliyun.com/product/acr). 
+# Scan Docker images in Alibaba Cloud Container Registry
+Use this GitHub Action to scan Docker images in [Alibaba Cloud Container Registry](https://www.aliyun.com/product/acr). 
+
+
+Scan image in ACR default instance
 
 ```yaml
-- uses: denverdino/acr-scan@v1
+- uses: aliyun/acr-scan@v1
   with:
     region-id: '<region id>' # example: cn-hangzhou
     access-key-id: '<access key id>'
@@ -11,10 +14,10 @@ Use this GitHub Action to scan images in [Alibaba Cloud Container Registry](http
     tag: '<tag>' # example: latest
 ```
 
-Or scan image in ACR EE instance
+Or scan image in specific ACR EE instance
 
 ```yaml
-- uses: denverdino/acr-scan@v1
+- uses: aliyun/acr-scan@v1
   with:
     region-id: '<region id>' # example: cn-hangzhou
     access-key-id: '<access key id>'
@@ -24,10 +27,8 @@ Or scan image in ACR EE instance
     tag: '<tag>' # example: latest
 ```
 
-Refer to the action metadata file for details about all the inputs: [action.yml](https://github.com/denverdino/acr-scan/blob/master/action.yml)
+Refer to the action metadata file for details about all the inputs: [action.yml](https://github.com/aliyun/acr-scan/blob/master/action.yml)
 
 
 ### Prerequisite
-Get the access-key-id and access-key-secret of your container registry 
-
-And add access-key-id and access-key-secret as [secret](https://developer.github.com/actions/managing-workflows/storing-secrets/) in the GitHub repository.
+Get the access-key-id and access-key-secret of Alibaba Cloud, and add them as [secrets](https://developer.github.com/actions/managing-workflows/storing-secrets/) in the GitHub repository.
