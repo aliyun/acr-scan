@@ -29,6 +29,6 @@ branding:
   color: 'green'
   icon: 'anchor'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 
