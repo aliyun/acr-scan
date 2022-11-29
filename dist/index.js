@@ -16293,8 +16293,9 @@ function getAPIEndpoint(regionId) {
 }
 
 async function run() {
-    let accessKeyId = core.getInput('access-key-id', { required: false });
-    let accessKeySecret = core.getInput('access-key-secret', { required: false });
+    let accessKeyId = core.getInput('access-key-id', { required: true });
+    let accessKeySecret = core.getInput('access-key-secret', { required: true });
+    let securityToken = core.getInput('security-token', { required: false });
     let regionId = core.getInput('region-id', { required: false });
     let instanceId = core.getInput('instance-id', { required: false });
     let repository = core.getInput('repository', { required: false });
@@ -16314,6 +16315,7 @@ async function run() {
                 let client = new ROAClient({
                     accessKeyId,
                     accessKeySecret,
+                    securityToken,
                     endpoint: endpoint,
                     apiVersion: '2016-06-07'
                 });
@@ -16329,6 +16331,7 @@ async function run() {
             let client = new RPCClient({
                 accessKeyId,
                 accessKeySecret,
+                securityToken,
                 endpoint: endpoint,
                 codes: ['success'], 
                 apiVersion: '2018-12-01'
@@ -16368,6 +16371,7 @@ async function run() {
 }
 
 run().catch(e => core.setFailed(e));
+
 })();
 
 module.exports = __webpack_exports__;
