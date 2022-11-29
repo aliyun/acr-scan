@@ -3,10 +3,14 @@ description: 'Scan image in container registry'
 inputs: 
   access-key-id:
     description: 'Access key id'
-    required: false
+    required: true
     default: ''
   access-key-secret:
     description: 'Access key secret'
+    required: true
+    default: ''
+  security-token:
+    description: 'STS token'
     required: false
     default: ''
   region-id:
